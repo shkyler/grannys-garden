@@ -21,18 +21,26 @@ def pick_tree():
     letter = np.random.choice(letters)
     number = str(np.random.choice(numbers))
     return(letter + number)
-
-# define a function to generate a random tree and ask the user to pick one
-def enter_choice(game_mode):
+# this function asks the user if they are ready to start - note there is a cheat built in
+# to set the tree to "a1" if the user enters 't'
+def start_game():
     global magic_tree
     global allowed_options
-    # if the user enters 't' - the magic tree is set to a1 as a cheat
-    if game_mode == "t":
+    # ask the user if they are readt (note 't' will fix the magic tree)
+    start = input("Ready to start?").lower()
+    # use a while loop to validate input
+    while start not in ["y", "n", "yes", "no","t"]:
+        start = input("Ready to start?")
+    if start == "t":
         magic_tree = "a1"
-    # otherwise - a random tree is picked   
-    elif game_mode =="y":    
+    elif start in ["y", "yes"]:
         magic_tree = pick_tree()
-    # check the entered choice against the allowed values    
+    elif start == "n":
+        print("OK, bye!")
+        quit()
+
+# define a function to generate a random tree and ask the user to pick one
+def enter_choice(): 
     choice = input("Which one do you think it is?")
     while choice not in allowed_options:
         choice = input("Sorry, thats not a valid tree. Please pick a valid option")
@@ -41,10 +49,11 @@ def enter_choice(game_mode):
         print("Correct, the magic tree was, ", magic_tree)
     else:
         print("Sorry, there is not enough magic in that tree!")
-        enter_choice(game_mode)
+        enter_choice()
 
 # define a function that plays the magic trees game on the console    
-def tree_game(game_mode):
+def tree_game():
+    start_game()
     print("========================================================================")
     print("=                                                                      =")
     print("=          ^              ^                ^                 ^         =")
@@ -66,7 +75,7 @@ def tree_game(game_mode):
     print("========================================================================")
     print("There is a magic tree here!")
     time.sleep(2)
-    enter_choice(game_mode)
+    enter_choice()
     
 
 

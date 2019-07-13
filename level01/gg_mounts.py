@@ -74,7 +74,8 @@ def cave():
   if ready in ["n", "no"]:
     time.sleep(1)
     print("Don't be silly. You are ready.")
-
+    time.sleep(1)
+    
 def cave_enter():
   print("========================================================================")
   print("=          ^                           _____                           =")

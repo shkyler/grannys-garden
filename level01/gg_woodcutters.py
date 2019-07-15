@@ -66,7 +66,6 @@ def stick():
     inventory.append("stick")
     time.sleep(1)
     print("You now have a stick and an apple")
-    print(inventory)
 
 def cupboard():
   global no_of_cupboard_entries

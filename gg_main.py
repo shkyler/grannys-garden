@@ -10,5 +10,5 @@ def play_game():
   gg_mounts.mounts_game()
   # the third game is the woodcutters house - details are in gg_woodcutters.py    
   gg_woodcutters.outside()
-
+#gg_trees.tree_game()
 play_game()

@@ -211,4 +211,4 @@ def outside():
   stick()    
   # start exploring from the hallway
   hallway()
-outside()    
+#outside()    

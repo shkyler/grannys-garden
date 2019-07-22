@@ -7,7 +7,7 @@ print("                         WELCOME TO GRANNYS GARDEN                      "
 def play_game():
   gg_trees.tree_game()
   # the second game is the kingdom of the mountains - details are in gg_mounts.py    
-  gg_mounts.mounts_game()
+  gg_mounts.mounts_game()                     
   # the third game is the woodcutters house - details are in gg_woodcutters.py    
   gg_woodcutters.outside()
 #gg_trees.tree_game()

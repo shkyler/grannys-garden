@@ -3,6 +3,7 @@ import time
 # define the global variables needed for this level
 inventory = []
 no_of_cupboard_entries = 0
+snake_dead = False
 
 def fig_puzzle():
   # user the global inventory list
@@ -128,8 +129,61 @@ def cupboard():
       hallway()
 
 def stairs():
-  print("stairs")
-  exit()
+  global snake_dead
+  global inventory
+  answers = 0
+  # let the user know where they are
+  print("We are on the stairs.")
+  time.sleep(1)
+  print("There is a nasty snake here.")
+  time.sleep(1)
+  print("Its mouth is open wide.")
+
+  if not snake_dead:
+    time.sleep(1)
+    print("I think it wants to eat you.")
+    time.sleep(1)
+    throw_object = input("What can you throw at the snake?.").lower()
+    while throw_object not in inventory and answers < 2:
+      time.sleep(1)
+      answers = answers + 1
+      print("That will not work.")
+      time.sleep(1)
+      print("I think it wants to eat you.")
+      time.sleep(1)
+      throw_object = input("What can you throw at the snake?.").lower()
+    if throw_object == "apple":
+      time.sleep(1)
+      print("What a good shot you are.")
+      print("You have killed the snake")
+      time.sleep(1)
+      print("At the top of the stairs there is a note on the wall.")
+      print("It says...........")
+      time.sleep(1)
+      print("* * * * * * * * * * * * * * * * *")
+      print("* Esther is in the house        *")
+      print("* hidden well from you          *")
+      print("* Look again and you may find   *")
+      print("* that one broom is now two.    *")
+      print("* * * * * * * * * * * * * * * * *")
+      snake_dead = True
+      time.sleep(1)
+      print("You go back down the stairs.")
+      hallway()
+     ## This elif and else statement need to be fleshed out 
+    elif throw_object == "stick":
+      print("call the witch")
+    else:
+      witch()  
+  else:
+    time.sleep(1)
+    print("The snake is dead.")
+    time.sleep(1)
+    print("There is nothing at the top of the stairs.")  
+    print("A loud voice tells you that Esther is not up there.")   
+    time.sleep(1)
+    print("You go back down the stairs.")     
+    hallway()
 
 def kitchen():
   print("kitchen")
@@ -211,4 +265,4 @@ def outside():
   stick()    
   # start exploring from the hallway
   hallway()
-#outside()    
+outside()    

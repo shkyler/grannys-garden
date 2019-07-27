@@ -49,7 +49,56 @@ def fig_puzzle():
   inventory.append("apple")
      
 def witch():
-  print("I am the WITCH")
+  # witch graphic
+  print("========================================================================")
+  print("=   *********************                                              =")
+  print("=    \                   \                                             =")
+  print("=      *                   *                                           =")
+  print("=    /                      \                                          =")
+  print("=   *                         *___________                             =")
+  print("=  /               *************************                           =")
+  print("=  ***************&&&&&&&&&                **                          =")
+  print("=       &&&&&&&&&&&&&&&&&&             /                               =")
+  print("=      &&&&&&&&&&&&&&&&&            (O)______                          =")
+  print("=     &  &&&&&&&&&&&&&&&          ____________\                        =")
+  print("=    &   &&&&&&&&&&&&&&&         |   u  u                              =")
+  print("=   &  &  &&&&&&&&&&&&           |__n_n_n__                            =")
+  print("=  &  &   &&&&&&&&&&&&         ____________)                           =")
+  print("=    &  & &&&&&&&&&&         _/                                        =")
+  print("=   &  &                    /                                          =")
+  print("=     &                                                                =")
+  print("========================================================================") 
+  # witch dialogue
+  time.sleep(1)
+  print("Ha ha! Now I've got you!")
+  time.sleep(1)
+  print("I will send you home at once.")
+  # bring the raven back to let us know we have to go home
+  time.sleep(1)
+  print("========================================================================")
+  print("=                                                                      =")
+  print("=                                             ***                      =")
+  print("=                                          *********                   =")
+  print("=                                     **********  ****                 =")
+  print("=                 ***************************************              =")
+  print("=           ****************************************************       =")
+  print("=                  **************************************     **       =")
+  print("=                      *****************************                   =")
+  print("=                         ************************                     =")
+  print("=                             *******************                      =")
+  print("=                                *************                         =")
+  print("=                                   *****                              =")
+  print("=                                   *  *                               =")
+  print("=                                   *  *                               =")
+  print("=                                   * *****                            =")
+  print("=                                   *                                  =")
+  print("=                                *******                               =")
+  print("========================================================================")
+  time.sleep(1)
+  print("I am very sorry but the Witch has sent us home.")
+  time.sleep(1)
+  print("You will have to try again later.")
+  # finish the game
   quit()
 
 def stick():
@@ -82,6 +131,9 @@ def cupboard():
     # if they take the red broomstick the witch shows up and sends them home
     take_broom = input("Are you going to take it?").lower()
     if take_broom in ["y", "yes"]:
+      time.sleep(1)
+      print("Silly! Silly! Silly!")
+      time.sleep(1)
       witch()
     # any other input and they go back to the hallway  
     else:
@@ -108,6 +160,9 @@ def cupboard():
         cupboard()
       # if red - the witch comes  
       if take_broom in ['r', 'red']:
+        time.sleep(1)
+        print("Silly! Silly! Silly!")
+        time.sleep(1)
         witch()
       # if green - we find Esther and this level ends  
       else:
@@ -138,7 +193,7 @@ def stairs():
   print("There is a nasty snake here.")
   time.sleep(1)
   print("Its mouth is open wide.")
-
+  # check is the snake dead
   if not snake_dead:
     time.sleep(1)
     print("I think it wants to eat you.")
@@ -152,6 +207,7 @@ def stairs():
       print("I think it wants to eat you.")
       time.sleep(1)
       throw_object = input("What can you throw at the snake?.").lower()
+    # the apple kills the snake
     if throw_object == "apple":
       time.sleep(1)
       print("What a good shot you are.")
@@ -160,6 +216,7 @@ def stairs():
       print("At the top of the stairs there is a note on the wall.")
       print("It says...........")
       time.sleep(1)
+      # print a clue!
       print("* * * * * * * * * * * * * * * * *")
       print("* Esther is in the house        *")
       print("* hidden well from you          *")
@@ -170,11 +227,22 @@ def stairs():
       time.sleep(1)
       print("You go back down the stairs.")
       hallway()
-     ## This elif and else statement need to be fleshed out 
+     ## This elif and else statement need to be fleshed out once the witch is 
     elif throw_object == "stick":
-      print("call the witch")
+      time.sleep(1)
+      print("What a pity.")
+      time.sleep(1)
+      print("The stick was an evil magic wand.")
+      print("Now the Witch is coming")
+      time.sleep(1)
+      witch()
     else:
+      time.sleep(1)
+      print("Now the snake is getting angry.")
+      time.sleep(1)
+      print("It has called the Witch.")
       witch()  
+  # if the snake is dead we use a different message    
   else:
     time.sleep(1)
     print("The snake is dead.")
@@ -186,12 +254,58 @@ def stairs():
     hallway()
 
 def kitchen():
-  print("kitchen")
-  exit()
+  # define a list of allowed answers
+  allowed_ans = ["y","n","yes","no"]
+  time.sleep(1)
+  print("There is a huge cooking pot hanging over a very hot fire.")
+  time.sleep(1)
+  print("I wonder what is in there.")
+  time.sleep(1)
+  # do you want to look in the pot?
+  look_in = input("Are you going to look in the pot?").lower()
+  while look_in not in allowed_ans:
+    look_in = input("Are you going to look in the pot?").lower()
+  # if no go back to the hallway  
+  if look_in in ["n", "no"]:
+    time.sleep(1)
+    print("You leave the room.")
+    time.sleep(1)
+    hallway()
+  # if yes the witch comes up  
+  else:    
+    time.sleep(1)
+    print("Silly! Silly! Silly!")
+    time.sleep(1)
+    witch()  
 
 def backroom():
-  print("backroom")
-  exit()  
+# define a list of allowed answers
+  allowed_ans = ["y","yes"]
+  time.sleep(1)
+  print("There is nothing in here except a small wooden box in the corner.")
+  time.sleep(1)
+  # do you want to look in the box?
+  open_box = input("Would you like to open the box?").lower()
+  # if the answer is not "y" or "yes", you leave the room
+  if open_box not in allowed_ans:
+    time.sleep(1)
+    print("You leave the room.")
+    time.sleep(1)
+    hallway()  
+  else:
+    time.sleep(1)
+    print("There is a note inside and is says ..........")  
+    time.sleep(1)
+    # print a clue!
+    print("* * * * * * * * * * * * * * * * *")
+    print("*      It's not in this room    *")
+    print("*       that you will find      *")
+    print("*        the Witch's broom.     *")
+    print("* * * * * * * * * * * * * * * * *")
+    time.sleep(1)
+    print("You leave the room.")
+    time.sleep(1)
+    hallway() 
 
 def hallway():
   # define a list of rooms adjacent to the hallway
@@ -264,5 +378,4 @@ def outside():
   # go inside - ask does the user want to take the stick
   stick()    
   # start exploring from the hallway
-  hallway()
-outside()    
+  hallway()  
